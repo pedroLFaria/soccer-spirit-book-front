@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Sam",
+        "element": "Ardor",
+        "aceSkill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
+    },
+    {
+        "name": "Dalgi",
+        "element": "Whirlwind",
+        "aceSkill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
+    },
+    {
+        "name": "Uranus",
+        "element": "Thunder",
+        "aceSkill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
+    },
+    {
+        "name": "Vonchi",
+        "element": "Light",
+        "aceSkill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
+    },
+    {
+        "name": "Presty",
+        "element": "Dark",
+        "aceSkill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
+    }
+]
