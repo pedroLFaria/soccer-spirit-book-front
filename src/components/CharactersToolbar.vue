@@ -42,7 +42,7 @@ export default Vue.extend({
       roles:[
         { caption: "Striker", state: false },
         { caption: "Goalkeeper", state: false },
-        { caption: "assistance", state: false },
+        { caption: "Assist", state: false },
         { caption: "Attacker", state: false },
         { caption: "Defender", state: false }
       ]

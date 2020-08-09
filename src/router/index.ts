@@ -13,6 +13,11 @@ Vue.use(VueRouter)
     path: '/characters-book',
     name: 'CharactersBook',
     component: () => import('../views/CharactersBook.vue')
+  },
+  {
+    path: '/stones-book',
+    name: 'StonesBook',
+    component: () => import('../views/StonesBook.vue')
   }
 ]
 

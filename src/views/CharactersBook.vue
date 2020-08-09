@@ -3,6 +3,7 @@
     <CharactersToolbar v-on:change-filters="onChangeFilter" />
     <Character-table v-bind:filters="filters" />
   </div>
+  
 </template>
 
 <script lang="ts">
