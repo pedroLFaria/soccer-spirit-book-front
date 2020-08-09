@@ -3,82 +3,93 @@
     <b-table
       striped
       hover
-      :items="characters"
+      :items="items"
       :fields="fields"
       :filter="criteria"
       :filter-function="charactersFilter"
-    ></b-table>
+    >
+      <template v-slot:cell(icon)="data">
+        <img alt="Vue logo" v-bind:src="getImagUrl(data.item.name)" />
+      </template>
+    </b-table>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import Character from "../common/Characters";
-fetch("../assets/characters.json").then(response => response.json()).then(console.log)
-
+import CharacterTableItems from "../common/CharacterTableItem";
+import Character from "../common/Character";
+const characters: Character[] = [];
+const CharacterTableItem: CharacterTableItems[] = [];
 export default Vue.extend({
   data() {
     return {
       criteria: this.filters,
       fields: [
         {
+          key: "icon",
+          label: "Icon",
+        },
+        {
           key: "name",
           sortable: true,
         },
         {
+          key: "role",
+        },
+        {
           key: "element",
-          sortable: false,
         },
         {
           key: "aceSkill",
-          sortable: false,
         },
       ],
-      characters: [
-        {
-          name: "Sam",
-          element: "Ardor",
-          aceSkill:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
-        },
-        {
-          name: "Dalgi",
-          element: "Whirlwind",
-          aceSkill:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
-        },
-        {
-          name: "Uranus",
-          element: "Thunder",
-          aceSkill:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
-        },
-        {
-          name: "Vonchi",
-          element: "Light",
-          aceSkill:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
-        },
-        {
-          name: "Presty",
-          element: "Dark",
-          aceSkill:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut.",
-        },
-      ],
+      characters: characters,
+      items: CharacterTableItem,
     };
   },
   methods: {
     charactersFilter(
-      character: Character,
+      character: CharacterTableItems,
       filterProp: { elements: string[]; roles: string[] }
     ) {
+      console.log(JSON.stringify(filterProp));
+      console.log(
+        JSON.stringify({ role: character.role, element: character.element })
+      );
       if (filterProp.elements.length == 0 && filterProp.roles.length == 0)
         return true;
-      return filterProp.elements.find(
-        (element) => character.element == element
-      );
+      else if (filterProp.roles.length == 0)
+        return filterProp.elements.find(
+          (element) => character.element == element
+        );
+      else if (filterProp.elements.length == 0)
+        return filterProp.roles.find((role) => character.role == role);
+      else
+        return (
+          filterProp.roles.find((role) => character.role == role) &&
+          filterProp.elements.find((element) => character.element == element)
+        );
     },
+    getImagUrl(picName: string) {
+      return require("../assets/icons/" + picName + ".png");
+    },
+  },
+  beforeMount() {
+    fetch("/characters.json")
+      .then((response) => response.json())
+      .then((data) => data as Character[])
+      .then((characters) => {
+        this.characters = characters;
+        this.items = characters.map((character) => {
+          return {
+            name: character.name,
+            role: character.role,
+            element: character.element,
+            aceSkill: character.ace.skill,
+          };
+        });
+      });
   },
   props: ["filters"],
 });
