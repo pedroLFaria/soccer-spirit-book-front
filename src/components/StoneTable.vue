@@ -1,4 +1,6 @@
 <template>
+    <b-container>
+
   <div>
     <b-table
       striped
@@ -9,6 +11,7 @@
       :filter-function="stonesFilter"
     ></b-table>
   </div>
+    </b-container>
 </template>
 
 <script lang="ts">
