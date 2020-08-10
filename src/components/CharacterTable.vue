@@ -9,9 +9,14 @@
       :filter-function="charactersFilter"
     >
       <template v-slot:cell(icon)="data">
-        <img alt="Vue logo" v-bind:src="getImagUrl(data.item.name)" />
+        <div v-on:click="openModal(data.item.name)">
+          <b-img-lazy v-bind:src="getImagUrl(data.item.name)" fluid class="char-icons" />
+        </div>
       </template>
     </b-table>
+    <b-modal v-model="modalShow" id="my-Modal" name="my-modal" size="xl">
+      <CharacterView v-bind:characterProp="modalCharacter" />
+    </b-modal>
   </div>
 </template>
 
@@ -19,9 +24,13 @@
 import Vue from "vue";
 import CharacterTableItems from "../common/CharacterTableItem";
 import Character from "../common/Character";
-const characters: Character[] = [];
-const CharacterTableItem: CharacterTableItems[] = [];
+import CharacterView from "../views/Character.vue";
+
 export default Vue.extend({
+  name: "CharacterTable",
+  components: {
+    CharacterView,
+  },
   data() {
     return {
       criteria: this.filters,
@@ -44,8 +53,10 @@ export default Vue.extend({
           key: "aceSkill",
         },
       ],
-      characters: characters,
-      items: CharacterTableItem,
+      characters: [] as Character[],
+      items: [] as CharacterTableItems[],
+      modalShow: false,
+      modalCharacter: {} as Character,
     };
   },
   methods: {
@@ -53,10 +64,6 @@ export default Vue.extend({
       character: CharacterTableItems,
       filterProp: { elements: string[]; roles: string[] }
     ) {
-      console.log(JSON.stringify(filterProp));
-      console.log(
-        JSON.stringify({ role: character.role, element: character.element })
-      );
       if (filterProp.elements.length == 0 && filterProp.roles.length == 0)
         return true;
       else if (filterProp.roles.length == 0)
@@ -72,7 +79,24 @@ export default Vue.extend({
         );
     },
     getImagUrl(picName: string) {
-      return require("../assets/icons/" + picName + ".png");
+      let requireImage;
+      try {
+        requireImage = require("../assets/icons/" + picName + ".png");
+      } catch {
+        requireImage = "https://http.cat/404"
+      }
+      return requireImage;
+    },
+    openModal(characterName: string) {
+      const character = this.characters.find(
+        (character) => character.name == characterName
+      );
+      console.log(JSON.stringify(character));
+      console.log(this.modalShow)
+      if (character) {
+        this.modalCharacter = character;
+        this.modalShow = !this.modalShow
+      }
     },
   },
   beforeMount() {
@@ -94,3 +118,9 @@ export default Vue.extend({
   props: ["filters"],
 });
 </script>
+
+<style>
+.char-icons {
+  max-width: 80px;
+}
+</style>

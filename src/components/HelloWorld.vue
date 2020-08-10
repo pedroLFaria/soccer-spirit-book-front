@@ -2,9 +2,9 @@
   <div class="hello">
     <h1>Welcome to Soccer Spirits Web book</h1>
     <p>
-      This is a open source Web App made by players of the game, if you want ot check the code and cotribute to it, or help with our database
+      This is a open source Web App made by players of the game, if you want ot check the code and contribute or help with our database
       <br />check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">github repository</a>.
+      <a href="https://github.com/pedroLFaria/soccer-spirit-book-front" target="_blank" rel="noopener">github repository</a>.
     </p>
   </div>
 </template>

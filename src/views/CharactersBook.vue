@@ -1,7 +1,7 @@
 <template>
   <div>
     <CharactersToolbar v-on:change-filters="onChangeFilter" />
-    <Character-table v-bind:filters="filters" />
+    <CharacterTable v-bind:filters="filters" />
   </div>
   
 </template>

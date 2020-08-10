@@ -4,70 +4,15 @@
         "element": "Ardor",
         "role": "Defender",
         "ace": {
-            "skill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut."
+            "skill": "Increases the support passive skill effect by 10% and MAX HP by 12%"
         },
         "skills": {
             "active": {
                 "spiritCost": "50",
                 "cooldown": "2",
                 "name": "Starlight Amplification III",
-                "text": "[Power-Up] Increases the attack power by 12.5 / 15.625 / 18.75 / 21.875 / 25% and critical rate by 12.5 / 15.625 / 18.75 / 21.875 / 25% . (Accumulates up to 3 times)",
-                "effects": [
-                    "self attack power UP",
-                    "self critical rate up",
-                    "self buff"
-                ]
-            },
-            "passive1": {
-                "name": "Traversing Starlight II",
-                "text": "Increases the critical damage by 4 / 8 / 12 / 16 / 20% and penetration by 4 / 8 / 12 / 16 / 20% of the allies within the vertical line.",
-                "effects": [
-                    "vertical line critical damge up",
-                    "vertical line penetration up",
-                    "vertical line buff"
-                ]
-            },
-            "passive2": {
-                "name": "Luminant Starlight",
-                "text": "Decreases the enemy team's action speed by 6 / 12 / 18 / 24 / 30% and critical resistance by 3 / 6 / 9 / 12 / 15% for 3 min. when being attacked.",
-                "effects": [
-                    "enemy team action speed down",
-                    "enemy team critical resistance down",
-                    "enemy team debuff",
-                    "on being attacked"
-                ]
-            },
-            "passive3": {
-                "name": "Spreading Starlight II",
-                "text": "Increases the MAX HP by 3 / 6 / 9 / 12 / 15% and critical damage resistance by 3 / 6 / 9 / 12 / 15%, and decreases the incoming damage by 3 / 6 / 9 / 12 / 15% of the allies within the position.",
-                "effects": [
-                    "within position max hp up",
-                    "within position critcal damage resistance up",
-                    "within position decreases incoming damage up",
-                    "within position buff"
-                ],
-                "finalTechnique": "Decreases the incoming damage by 15% for 5 min. (Cooldown: 15 minutes) (Available after 2 minutes) (Up to 2 times)​"
-            },
-            "slots": [
-                "red",
-                "blue",
-                "dark"
-            ]
-        }
-    },
-    {
-        "name": "Dalgi",
-        "element": "Whirlwind",
-        "role": "Assist",
-        "ace": {
-            "skill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut."
-        },
-        "skills": {
-            "active": {
-                "spiritCost": 50,
-                "cooldown": 2,
-                "name": "Starlight Amplification III",
-                "text": "[Power-Up] Increases the attack power by 12.5 / 15.625 / 18.75 / 21.875 / 25% and critical rate by 12.5 / 15.625 / 18.75 / 21.875 / 25% . (Accumulates up to 3 times)",
+                "type": "Power-up",
+                "text": "Increases the attack power by 12.5 / 15.625 / 18.75 / 21.875 / 25% and critical rate by 12.5 / 15.625 / 18.75 / 21.875 / 25% . (Accumulates up to 3 times)",
                 "effects": [
                     "self attack power UP",
                     "self critical rate up",
@@ -102,183 +47,267 @@
                         "within position critcal damage resistance up",
                         "within position decreases incoming damage up",
                         "within position buff"
-                    ],
-                    "finalTechnique": "Decreases the incoming damage by 15% for 5 min. (Cooldown: 15 minutes) (Available after 2 minutes) (Up to 2 times)​"
+                    ]
                 }
             ],
-            "slots": [
-                "red",
-                "blue",
-                "dark"
-            ]
-        }
+            "finalTechnique": {
+                "avaliableAfterMinutes": 2,
+                "upToUsage": 2,
+                "cooldown": 15,
+                "text": "Decreases the incoming damage by 15% for 5 min.",
+                "effects": []
+            }
+        },
+        "slots": [
+            "red",
+            "blue",
+            "dark"
+        ]
+    },
+    {
+        "name": "Dalgi",
+        "element": "Whirlwind",
+        "role": "Assist",
+        "ace": {
+            "skill": "Increases the HP by 22%, reflex by 22% and pass effect by 22% of Whirlwind and Ardor players."
+        },
+        "skills": {
+            "active": {
+                "spiritCost": 50,
+                "cooldown": 6,
+                "name": "Pleasure of Supremacy III",
+                "type": "Pass",
+                "text": "Recovers the action bar of the designated target by 100% and increases the target's receiving pass effect by 40% and critical rate by 25%.",
+                "effects": [
+                    "Recover action bar",
+                    "receiving pass effect buff",
+                    "critical rate buff"
+                ]
+            },
+            "passive": [
+                {
+                    "name": "Black Bliss",
+                    "text": "Increases the ally team’s MAX HP by 30% and action speed by 15% with a pass for 6 min, in addition to applying 1 count on cumulative active shoot count with a 100% chance.​",
+                    "effects": []
+                },
+                {
+                    "name": "Seed of Corruption II",
+                    "text": "Steals 20% of the Attack Power and 15% of the critical damage resistance of the enemies currently in the assigned position for 3 min with an action.​",
+                    "effects": []
+                },
+                {
+                    "name": "Heart of Ambition",
+                    "text": "Increases the reflex by 30% and pass effect by 30%, and decreases the incoming damage by 10%.​",
+                    "effects": []
+                }
+            ],
+            "finalTechnique": {
+                "avaliableAfterMinutes": 2,
+                "upToUsage": 2,
+                "cooldown": 15,
+                "text": "Increases the critical rate by 20% for 5 min.",
+                "effects": []
+            }
+        },
+        "slots": [
+            "green",
+            "red",
+            "dark"
+        ]
     },
     {
         "name": "Bell",
         "role": "Leader",
         "element": "Thunder",
         "ace": {
-            "skill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut."
+            "skill": "Increases the action speed by 25(40)% and reflex by 30(48)% of Thunder players.",
+            "name": "Queen's Grace"
         },
         "skills": {
             "active": {
-                "spiritCost": "50",
-                "cooldown": "2",
-                "name": "Starlight Amplification III",
-                "text": "[Power-Up] Increases the attack power by 12.5 / 15.625 / 18.75 / 21.875 / 25% and critical rate by 12.5 / 15.625 / 18.75 / 21.875 / 25% . (Accumulates up to 3 times)",
-                "effects": [
-                    "self attack power UP",
-                    "self critical rate up",
-                    "self buff"
-                ]
+                "spiritCost": "100",
+                "cooldown": "12",
+                "name": "Earthquake Iceberg III",
+                "type": "Strategy",
+                "text": "Decreases the action speed and defense of the enemy team by 25% for 12 min.",
+                "effects": []
             },
-            "passive1": {
-                "name": "Traversing Starlight II",
-                "text": "Increases the critical damage by 4 / 8 / 12 / 16 / 20% and penetration by 4 / 8 / 12 / 16 / 20% of the allies within the vertical line.",
-                "effects": [
-                    "vertical line critical damge up",
-                    "vertical line penetration up",
-                    "vertical line buff"
-                ]
-            },
-            "passive2": {
-                "name": "Luminant Starlight",
-                "text": "Decreases the enemy team's action speed by 6 / 12 / 18 / 24 / 30% and critical resistance by 3 / 6 / 9 / 12 / 15% for 3 min. when being attacked.",
-                "effects": [
-                    "enemy team action speed down",
-                    "enemy team critical resistance down",
-                    "enemy team debuff",
-                    "on being attacked"
-                ]
-            },
-            "passive3": {
-                "name": "Spreading Starlight II",
-                "text": "Increases the MAX HP by 3 / 6 / 9 / 12 / 15% and critical damage resistance by 3 / 6 / 9 / 12 / 15%, and decreases the incoming damage by 3 / 6 / 9 / 12 / 15% of the allies within the position.",
-                "effects": [
-                    "within position max hp up",
-                    "within position critcal damage resistance up",
-                    "within position decreases incoming damage up",
-                    "within position buff"
-                ],
-                "finalTechnique": "Decreases the incoming damage by 15% for 5 min. (Cooldown: 15 minutes) (Available after 2 minutes) (Up to 2 times)​"
-            },
-            "slots": [
-                "red",
-                "blue",
-                "dark"
-            ]
-        }
+            "passive": [
+                {
+                    "name": "Controlling Power",
+                    "text": "Increases the Attack Power, MAX HP, reflex, and critical rate by 25% of the allies currently in the assigned position.",
+                    "effects": []
+                },
+                {
+                    "name": "Inner Passion",
+                    "text": "Increases the critical damage by 30% and the action bar always starts at 30%. (Added to the action bar bonus given at the start of the match)​",
+                    "effects": []
+                },
+                {
+                    "name": "Unavoidable Destiny II",
+                    "text": "Increases the Attack Power by 70% and reflex by 35% and decreases the incoming damage by 20% for 1 min with an attack or when being attacked. (Accumulates up to 2 times)​.",
+                    "effects": []
+                }
+            ],
+            "finalTechnique": {
+                "avaliableAfterMinutes": 2,
+                "upToUsage": 2,
+                "cooldown": 15,
+                "text": "Increases the reflex by 15% for 5 min.",
+                "effects": []
+            }
+        },
+        "slots": [
+            "blue",
+            "blue",
+            "yellow"
+        ]
     },
     {
         "name": "Vonchi",
         "role": "Striker",
         "element": "Light",
         "ace": {
-            "skill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut."
+            "skill": "Increases the damage that Light players deal to Dark players by 25(35)%.​",
+            "name": "Poker Face"
+        },
+        "skills": {
+            "active": {
+                "spiritCost": 50,
+                "cooldown": 0,
+                "name": "Grand Finale III",
+                "type": "Shoot",
+                "text": "Increases the attack power by 25% and critical damage by 25%. (Accumulates up to 5 times.) (The effect only applies to active shoots)",
+                "effects": [
+                    "self critical damage buff",
+                    "self critical rate buff",
+                    "self buff"
+                ]
+            },
+            "passive": [
+                {
+                    "name": "Excellent Skills II",
+                    "text": "Increases the reflexes and penetration by 40%.​",
+                    "effects": []
+                },
+                {
+                    "name": "Limitation and Determination",
+                    "text": "Increases the action speed by 20%, Attack Power by 30%, and critical rate by 20% for 45 min with an attack. (Accumulates up to 3 times) (Lasts even under inability effects)",
+                    "effects": []
+                },
+                {
+                    "name": "Clutch Moment",
+                    "text": "Increases the critical rate by 1.2% and attack power by 10 for every 3 action speed you possess",
+                    "effects": []
+                }
+            ],
+            "finalTechnique": {
+                "avaliableAfterMinutes": 5,
+                "upToUsage": 2,
+                "cooldown": 20,
+                "text": "Adds 1 more active accumulation for 5 min.",
+                "effects": []
+            }
+        },
+        "slots": [
+            "yellow",
+            "yellow",
+            "red"
+        ]
+    },
+    {
+        "name": "Curod",
+        "role": "Attacker",
+        "element": "Light",
+        "ace": {
+            "skill": "Increases the penetration by 22(35)% and MAX HP by 25(42)% of Light and Whirlwind players.",
+            "name": "Executive No. 1"
         },
         "skills": {
             "active": {
                 "spiritCost": "50",
-                "cooldown": "2",
-                "name": "Starlight Amplification III",
-                "text": "[Power-Up] Increases the attack power by 12.5 / 15.625 / 18.75 / 21.875 / 25% and critical rate by 12.5 / 15.625 / 18.75 / 21.875 / 25% . (Accumulates up to 3 times)",
-                "effects": [
-                    "self attack power UP",
-                    "self critical rate up",
-                    "self buff"
-                ]
+                "cooldown": "10",
+                "name": "Do I Look Like Devil? !!!",
+                "type": "Keeping the Ball",
+                "text": "Increases the Attack Power by 100% and reflex by 100% of the allies currently in the assigned position for 5 min.",
+                "effects": []
             },
-            "passive1": {
-                "name": "Traversing Starlight II",
-                "text": "Increases the critical damage by 4 / 8 / 12 / 16 / 20% and penetration by 4 / 8 / 12 / 16 / 20% of the allies within the vertical line.",
-                "effects": [
-                    "vertical line critical damge up",
-                    "vertical line penetration up",
-                    "vertical line buff"
-                ]
-            },
-            "passive2": {
-                "name": "Luminant Starlight",
-                "text": "Decreases the enemy team's action speed by 6 / 12 / 18 / 24 / 30% and critical resistance by 3 / 6 / 9 / 12 / 15% for 3 min. when being attacked.",
-                "effects": [
-                    "enemy team action speed down",
-                    "enemy team critical resistance down",
-                    "enemy team debuff",
-                    "on being attacked"
-                ]
-            },
-            "passive3": {
-                "name": "Spreading Starlight II",
-                "text": "Increases the MAX HP by 3 / 6 / 9 / 12 / 15% and critical damage resistance by 3 / 6 / 9 / 12 / 15%, and decreases the incoming damage by 3 / 6 / 9 / 12 / 15% of the allies within the position.",
-                "effects": [
-                    "within position max hp up",
-                    "within position critcal damage resistance up",
-                    "within position decreases incoming damage up",
-                    "within position buff"
-                ],
-                "finalTechnique": "Decreases the incoming damage by 15% for 5 min. (Cooldown: 15 minutes) (Available after 2 minutes) (Up to 2 times)​"
-            },
-            "slots": [
-                "red",
-                "blue",
-                "dark"
-            ]
-        }
+            "passive": [
+                {
+                    "name": "Limit Response",
+                    "text": "Increases reflexes by 70% and decreases the incoming damage by 20% when being attacked.",
+                    "effects": []
+                },
+                {
+                    "name": "Dragon's Fighting Spirit II",
+                    "text": "Increases critical rate by 25% and critical damage by 25% of the allies within the position.",
+                    "effects": []
+                },
+                {
+                    "name": "Devil Destructor",
+                    "text": "Presty receives 5% less damage and has 5% increased critical damage resistance when placed in the Goal Keeper position. (The effect becomes stronger for every ally player that is active)",
+                    "effects": []
+                }
+            ],
+            "cooperationTechnique": {
+                "text": "Decreases the incoming damage by 15% when being penetrated.",
+                "cooldown": 10,
+                "upToUsage": 3,
+                "activatesWith": "Hiro"
+            }
+        },
+        "slots": [
+            "yellow",
+            "green",
+            "dark"
+        ]
     },
     {
         "name": "Presty",
         "role": "Goalkeeper",
         "element": "Dark",
         "ace": {
-            "skill": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at laoreet dui. Nam eu ullamcorper lacus, ac pulvinar sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin aliquet ante nunc, eget blandit eros mattis ut."
+            "skill": "Decreases the damage coming from Dark players by 20%.",
+            "name": "Hope of Karadrad"
         },
         "skills": {
             "active": {
                 "spiritCost": "50",
-                "cooldown": "2",
-                "name": "Starlight Amplification III",
-                "text": "[Power-Up] Increases the attack power by 12.5 / 15.625 / 18.75 / 21.875 / 25% and critical rate by 12.5 / 15.625 / 18.75 / 21.875 / 25% . (Accumulates up to 3 times)",
-                "effects": [
-                    "self attack power UP",
-                    "self critical rate up",
-                    "self buff"
-                ]
+                "cooldown": "10",
+                "name": "Clockwork of Purification III",
+                "type": "Shield",
+                "text": "Removes the active debuff effects on you when you get attacked and recovers 30% of the lost HP first for 8 min. ",
+                "effects": []
             },
-            "passive1": {
-                "name": "Traversing Starlight II",
-                "text": "Increases the critical damage by 4 / 8 / 12 / 16 / 20% and penetration by 4 / 8 / 12 / 16 / 20% of the allies within the vertical line.",
-                "effects": [
-                    "vertical line critical damge up",
-                    "vertical line penetration up",
-                    "vertical line buff"
-                ]
-            },
-            "passive2": {
-                "name": "Luminant Starlight",
-                "text": "Decreases the enemy team's action speed by 6 / 12 / 18 / 24 / 30% and critical resistance by 3 / 6 / 9 / 12 / 15% for 3 min. when being attacked.",
-                "effects": [
-                    "enemy team action speed down",
-                    "enemy team critical resistance down",
-                    "enemy team debuff",
-                    "on being attacked"
-                ]
-            },
-            "passive3": {
-                "name": "Spreading Starlight II",
-                "text": "Increases the MAX HP by 3 / 6 / 9 / 12 / 15% and critical damage resistance by 3 / 6 / 9 / 12 / 15%, and decreases the incoming damage by 3 / 6 / 9 / 12 / 15% of the allies within the position.",
-                "effects": [
-                    "within position max hp up",
-                    "within position critcal damage resistance up",
-                    "within position decreases incoming damage up",
-                    "within position buff"
-                ],
-                "finalTechnique": "Decreases the incoming damage by 15% for 5 min. (Cooldown: 15 minutes) (Available after 2 minutes) (Up to 2 times)​"
-            },
-            "slots": [
-                "red",
-                "blue",
-                "dark"
-            ]
-        }
+            "passive": [
+                {
+                    "name": "Clockwork Activation",
+                    "text": "Increases the effect of Spirit Stones on Presty by 30%, HP by 600, and defense by 20%. (Activates only when placed in Goal Keeper position)​",
+                    "effects": []
+                },
+                {
+                    "name": "Clockwork of Binding",
+                    "text": "When receiving a shot, paralyzes and decreases the enemy shooter's critical rate by 40% with a 100% chance for 3 min.​",
+                    "effects": []
+                },
+                {
+                    "name": "Rally of the Guardian Knights II",
+                    "text": "Presty receives 5% less damage and has 5% increased critical damage resistance when placed in the Goal Keeper position. (The effect becomes stronger for every ally player that is active)",
+                    "effects": []
+                }
+            ],
+            "finalTechnique": {
+                "avaliableAfterMinutes": 2,
+                "upToUsage": 2,
+                "cooldown": 15,
+                "text": "Increases the critical damage resistance by 25% for 5 min.",
+                "effects": []
+            }
+        },
+        "slots": [
+            "red",
+            "blue",
+            "dark"
+        ]
     }
 ]
