@@ -22,6 +22,15 @@
           v-on:click="$emit('change-filters', {state:btn.state, type:'roles' , caption:btn.caption})"
         >{{ btn.caption }}</b-button>
       </b-button-group>
+      <b-button-group class="mx-1">
+        <b-button
+          v-for="(btn, idx) in raritys"
+          :key="idx"
+          :pressed.sync="btn.state"
+          variant="secondary"
+          v-on:click="$emit('change-filters', {state:btn.state, type:'raritys' , caption:btn.caption})"
+        >{{ btn.caption }}</b-button>
+      </b-button-group>
       <b-button>Reset</b-button>
     </b-button-toolbar>
   </div>
@@ -37,15 +46,23 @@ export default Vue.extend({
         { caption: "Whirlwind", state: false, variant: "success" },
         { caption: "Thunder", state: false, variant: "primary" },
         { caption: "Light", state: false, variant: "warning" },
-        { caption: "Dark", state: false, variant: "dark" }
+        { caption: "Dark", state: false, variant: "dark" },
       ],
-      roles:[
+      roles: [
         { caption: "Striker", state: false },
         { caption: "Goalkeeper", state: false },
         { caption: "Assist", state: false },
         { caption: "Attacker", state: false },
-        { caption: "Defender", state: false }
-      ]
+        { caption: "Defender", state: false },
+      ],
+      raritys: [
+        { caption: "L", state: false },
+        { caption: "SR", state: false },
+        { caption: "SRB", state: false },
+        { caption: "R", state: false },
+        { caption: "RB", state: false },
+        { caption: "N", state: false },
+      ],
     };
   },
 });

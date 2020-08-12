@@ -10,7 +10,13 @@
     >
       <template v-slot:cell(icon)="data">
         <div v-on:click="openModal(data.item.name)">
-          <b-img-lazy v-bind:src="getImagUrl(data.item.name)" fluid class="char-icons" />
+          <b-img-lazy
+            v-bind:src="iconsUrls.get(data.item.name) || ''"
+            v-bind:name="data.item.name"
+            v-bind:key="reloadIcons"
+            fluid
+            class="char-icons"
+          />
         </div>
       </template>
     </b-table>
@@ -25,6 +31,8 @@ import Vue from "vue";
 import CharacterTableItems from "../common/CharacterTableItem";
 import Character from "../common/Character";
 import CharacterView from "../views/Character.vue";
+import firebase from "firebase";
+import "firebase/storage";
 
 export default Vue.extend({
   name: "CharacterTable",
@@ -44,10 +52,16 @@ export default Vue.extend({
           sortable: true,
         },
         {
+          key: "rarity",
+          sortable: true,
+        },
+        {
           key: "role",
+          sortable: true,
         },
         {
           key: "element",
+          sortable: true,
         },
         {
           key: "aceSkill",
@@ -57,45 +71,56 @@ export default Vue.extend({
       items: [] as CharacterTableItems[],
       modalShow: false,
       modalCharacter: {} as Character,
+      iconsUrls: new Map(),
+      reloadIcons: false,
     };
   },
   methods: {
     charactersFilter(
       character: CharacterTableItems,
-      filterProp: { elements: string[]; roles: string[] }
+      filterProp: { elements: string[]; roles: string[]; raritys: string[] }
     ) {
-      if (filterProp.elements.length == 0 && filterProp.roles.length == 0)
-        return true;
-      else if (filterProp.roles.length == 0)
-        return filterProp.elements.find(
-          (element) => character.element == element
-        );
-      else if (filterProp.elements.length == 0)
-        return filterProp.roles.find((role) => character.role == role);
-      else
-        return (
-          filterProp.roles.find((role) => character.role == role) &&
-          filterProp.elements.find((element) => character.element == element)
-        );
+      return (
+        (!filterProp.elements.length ||
+          filterProp.elements.find(element => character.element == element)) &&
+        (!filterProp.roles.length ||
+          filterProp.roles.find(role => character.role == role)) &&
+        (!filterProp.raritys.length ||
+          filterProp.raritys.find(rarity => character.rarity == rarity))
+      );
     },
     getImagUrl(picName: string) {
       let requireImage;
       try {
         requireImage = require("../assets/icons/" + picName + ".png");
       } catch {
-        requireImage = "https://http.cat/404"
+        requireImage = "https://http.cat/404";
       }
       return requireImage;
+    },
+    getAsyncImage(picName: string) {
+      firebase
+        .storage()
+        .refFromURL(
+          `gs://soccer-spirit-book-1a4fc.appspot.com/icons/${picName}.png`
+        )
+        .getDownloadURL()
+        .then((url) => {
+          this.iconsUrls.set(picName, url);
+        })
+        .catch((e) => {
+          this.iconsUrls.set(picName, "https://http.cat/404");
+          console.error(e);
+        })
+        .then(() => (this.reloadIcons = !this.reloadIcons));
     },
     openModal(characterName: string) {
       const character = this.characters.find(
         (character) => character.name == characterName
       );
-      console.log(JSON.stringify(character));
-      console.log(this.modalShow)
       if (character) {
         this.modalCharacter = character;
-        this.modalShow = !this.modalShow
+        this.modalShow = !this.modalShow;
       }
     },
   },
@@ -106,9 +131,11 @@ export default Vue.extend({
       .then((characters) => {
         this.characters = characters;
         this.items = characters.map((character) => {
+          this.getAsyncImage(character.name);
           return {
             name: character.name,
             role: character.role,
+            rarity: character.rarity,
             element: character.element,
             aceSkill: character.ace.skill,
           };

@@ -3,6 +3,7 @@
         "name": "Jiho",
         "element": "Ardor",
         "role": "Defender",
+        "rarity": "L",
         "ace": {
             "skill": "Increases the support passive skill effect by 10% and MAX HP by 12%"
         },
@@ -68,6 +69,7 @@
         "name": "Dalgi",
         "element": "Whirlwind",
         "role": "Assist",
+        "rarity": "L",
         "ace": {
             "skill": "Increases the HP by 22%, reflex by 22% and pass effect by 22% of Whirlwind and Ardor players."
         },
@@ -119,6 +121,7 @@
         "name": "Bell",
         "role": "Leader",
         "element": "Thunder",
+        "rarity": "L",
         "ace": {
             "skill": "Increases the action speed by 25(40)% and reflex by 30(48)% of Thunder players.",
             "name": "Queen's Grace"
@@ -167,6 +170,7 @@
         "name": "Vonchi",
         "role": "Striker",
         "element": "Light",
+        "rarity": "L",
         "ace": {
             "skill": "Increases the damage that Light players deal to Dark players by 25(35)%.​",
             "name": "Poker Face"
@@ -219,6 +223,7 @@
         "name": "Curod",
         "role": "Attacker",
         "element": "Light",
+        "rarity": "SR",
         "ace": {
             "skill": "Increases the penetration by 22(35)% and MAX HP by 25(42)% of Light and Whirlwind players.",
             "name": "Executive No. 1"
@@ -266,6 +271,7 @@
         "name": "Presty",
         "role": "Goalkeeper",
         "element": "Dark",
+        "rarity": "L",
         "ace": {
             "skill": "Decreases the damage coming from Dark players by 20%.",
             "name": "Hope of Karadrad"

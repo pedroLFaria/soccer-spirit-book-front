@@ -2,6 +2,7 @@ export default interface Character {
     name: string,
     role: "Goalkeeper" | "Defender" | "Attacker" | "Striker" | "Leader" | "Assist"
     element: "Ardor" | "Whirlwind" | "Light" | "Thunder" | "Dark",
+    rarity: "L" | "SR" | "SRB" | "R" | "RB" | "N"
     ace: Ace,
     skills: skills
 }

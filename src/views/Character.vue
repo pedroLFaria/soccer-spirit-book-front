@@ -2,7 +2,7 @@
   <b-container fluid>
     <b-row>
       <b-col cols="4">
-        <b-img fluid thumbnail blank-color="red" :src="requireImage()" />
+        <b-img fluid thumbnail blank-color="red" :src="artUrl" />
       </b-col>
       <b-col>
         <b-row>
@@ -34,11 +34,14 @@
 <script lang="ts">
 import Vue from "vue";
 import Character from "../common/Character";
+import firebase from "firebase";
+import "firebase/storage";
 
 export default Vue.extend({
   data() {
     return {
       character: {} as Character,
+      artUrl: ""
     };
   },
   methods: {
@@ -52,14 +55,20 @@ export default Vue.extend({
       const passiveSkill = this.character.skills.passive[n];
       return passiveSkill.text;
     },
-    requireImage() {
-      let requireImage;
-      try {
-        requireImage = require("../assets/art/" + this.character.name + ".png");
-      } catch {
-        requireImage = "https://http.cat/404"
-      }
-      return requireImage;
+    getAsyncImage() {
+      firebase
+        .storage()
+        .refFromURL(
+          `gs://soccer-spirit-book-1a4fc.appspot.com/art/${this.character.name}.png`
+        )
+        .getDownloadURL()
+        .then((url) => {
+          this.artUrl = url;
+        })
+        .catch((e) => {
+          this.artUrl = "https://http.cat/404";
+          console.error(e);
+        });
     },
   },
   props: {
@@ -67,6 +76,7 @@ export default Vue.extend({
   },
   beforeMount: function () {
     this.character = this.characterProp;
+    this.getAsyncImage()
   },
 });
 </script>
